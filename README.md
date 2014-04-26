@@ -30,4 +30,5 @@ data: {
 4. ...
 
 Licensed under [GNU GPL Version 3 license](http://www.gnu.org/licenses/gpl-3.0.txt)
+
 Copyright (c) 2014 Przemysław Królik
