@@ -10,7 +10,9 @@ v 0.0.1 alpha
 ##Usage
 1. Inlude jQTB js file to your site.
 2. Get container for brackets (ie. ```$('#test')```) and call bracket function on it ```$('#test').bracket()```. All done!
+
 	2.1. To change data pass it to the ```.bracket()``` function by object.
+
 	2.2. Or change it by ```$.fn.bracket.default.data = myData;``` in your code.
 
 ##Data
