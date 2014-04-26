@@ -16,7 +16,7 @@ v 0.0.1 alpha
 ##Data
 Currently plugin is using data in this pattern:
 
-```json
+```javascript
 data: {
         teams: ['teamA','teamB','teamC','teamD'],
         results: [ [{teamName: 'teamA', points: 2},{teamName: 'teamB', points: 3}], [{teamName: 'teamC', points: 5},{teamName: 'teamD', points: 2}], [{teamName: 'teamB', points: 3},{teamName: 'teamC', points: 2}], [{teamName: 'teamB'}]]
