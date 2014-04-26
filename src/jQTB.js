@@ -1,3 +1,9 @@
+/**@license
+ *
+ * Licensed under GNU GPL Version 3 license
+ * Copyright (c) 2014 Przemysław Królik
+ *
+ */
 'use strict';
 (function($){
     
