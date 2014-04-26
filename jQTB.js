@@ -30,7 +30,9 @@
         $(mainContainer).children('.bracketsContainer').each(function(bracketContainerIndex, bracketContainer) {
             $(bracketContainer).children('.bracket').each(function(bracketIndex, bracket) {
                 var currResult = data.results[cursor][bracketIndex%2];
-                $(bracket).text(currResult.teamName.concat(currResult.points === 'undefined' ? '' : currResult.points));
+                var textToDisplay = currResult.teamName + ' ';
+                textToDisplay += currResult.points === undefined ? '' : currResult.points;
+                $(bracket).text(textToDisplay);
                 bracketIndex % 2 == 1 ? cursor++ : null;
             });
         });
