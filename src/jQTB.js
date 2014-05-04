@@ -4,17 +4,17 @@
  * Copyright (c) 2014 Przemysław Królik
  *
  */
-'use strict';
+
 (function($){
-    
-    var data, numberOfTeams;
+    "use strict";
+    var data, numberOfTeams, options;
 
     var log2 = function (val) {
         return Math.log(val)/Math.LN2;
     };
     
     var createBrackets = function (mainContainer) {
-        data = $.fn.bracket.defults.data;
+        data = options.data;
         numberOfTeams = data.teams.length;
         var i;
         for ( i = 1 ; i <= log2(numberOfTeams) + 1 ; i++ ) {
@@ -39,15 +39,44 @@
                 var textToDisplay = currResult.teamName + ' ';
                 textToDisplay += currResult.points === undefined ? '' : currResult.points;
                 $(bracket).text(textToDisplay);
-                bracketIndex % 2 == 1 ? cursor++ : null;
+                if (bracketIndex % 2 == 1)
+                    cursor++;
             });
         });
     };
     
-    $.fn.bracket = function (options){
-        $.fn.bracket.defults = $.extend({}, $.fn.bracket.defults, options);
-        createBrackets(this);
-        return this;
+    //to be implemented
+    // var callData = function (that) {
+    //     $.getJSON(options.url)
+    //     .done(function(callbackData){
+    //         //validate data
+    //         options.data = callbackData;
+    //         $(that).empty();
+    //         createBrackets(that);
+    //     })
+    // };
+    
+    var methods = {
+        init: function (userOptions){
+            options = $.extend({}, $.fn.bracket.defults, userOptions);
+            // if (options.url) {
+            //     callData(this);
+            // }
+            // else {
+                createBrackets(this);
+            // }
+            return this;
+        }
+    };
+    
+    $.fn.bracket = function (methodOrOptions){
+        if ( methods[methodOrOptions] ) {
+            return methods[ methodOrOptions ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+        } else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
+            return methods.init.apply( this, arguments );
+        } else {
+            $.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.bracket' );
+        }    
     };
 
     $.fn.bracket.defults = {
